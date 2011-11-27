@@ -4,6 +4,7 @@ require 'test/unit'
 class TestNumber < Test::Unit::TestCase
 	@@zero = Surreals::Number.new
 	@@one = Surreals::Number.new.next
+	@@minusone = Surreals::Number.new.previous
 	
 	def test_creates_zero
 		assert @@zero.valid?
@@ -33,6 +34,14 @@ class TestNumber < Test::Unit::TestCase
 	def test_one_to_s
 		assert_equal "1", @@one.to_s
 	end
+
+	def test_minus_one_to_s
+		assert_equal "-1", @@minusone.to_s
+	end
+
+	def test_minus_two_to_s
+		assert_equal "-2", @@minusone.previous.to_s
+	end
 	
 	def test_zero_less_or_equal_than_zero
 		assert @@zero.lessOrEqual(@@zero)
@@ -54,7 +63,6 @@ class TestNumber < Test::Unit::TestCase
 	end
 	
 	def test_one_equal_one
-		puts "test_one_equal_one"
 		assert @@one.lessOrEqual(@@one)
 		assert @@one.eqv?(@@one)
 	end

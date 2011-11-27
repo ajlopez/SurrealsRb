@@ -32,13 +32,13 @@ class Number
 		return Number.new NumberSet.new [self]
 	end
 	
+	def previous
+		return Number.new NumberSet.new, NumberSet.new([self])
+	end
+	
 	def lessOrEqual(x)
-		puts "lessOrEqual #{self} #{x}"
 		result1 = @left.notGreaterOrEqual(x)
 		result2 = notGreaterOrEqual(x.right)
-		
-		puts "Result1 #{result1}"
-		puts "Result2 #{result2}"
 		
 		return (result1 and result2)
 	end

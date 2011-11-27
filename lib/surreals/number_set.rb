@@ -5,7 +5,6 @@ module Surreals
 
 class NumberSet < Set
 	def notGreaterOrEqual(x)
-		puts "notGreaterOrEqual #{self} #{x}"
 		if self.empty?
 			return true
 		end
@@ -17,6 +16,34 @@ class NumberSet < Set
 		end
 		
 		return true
+	end
+	
+	def greatestNumber
+		result = nil
+		
+		self.each do |number|
+			if result == nil
+				result = number
+			elsif result.less(number)
+				result = number
+			end
+		end
+		
+		return result
+	end
+	
+	def lessNumber
+		result = nil
+		
+		self.each do |number|
+			if result == nil
+				result = number
+			elsif number.less(result)
+				result = number
+			end
+		end
+		
+		return result
 	end
 	
 	def to_s
