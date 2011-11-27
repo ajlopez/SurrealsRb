@@ -15,4 +15,21 @@ class TestNumber < Test::Unit::TestCase
 		assert one.valid?
 		assert_equal false, one.zero?
 	end
+	
+	def test_zero_less_or_equal_than_zero
+		zero = Surreals::Number.new
+		
+		assert zero.lessOrEqual(zero)
+	end
+	
+	def test_zero_less_or_equal_than_one
+		zero = Surreals::Number.new
+		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
+		
+		assert zero.less(one)
+		assert (not one.less(zero))
+		
+		assert zero.lessOrEqual(one)
+		assert_equal false, one.lessOrEqual(zero)
+	end
 end
