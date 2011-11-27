@@ -58,11 +58,11 @@ class Number
 	# self ~>= x
 	def notGreaterOrEqual(x)
 		if x.is_a? Number
-			return x.less(self)
+			return less(x)
 		end
 		
 		x.each do |element|
-			if not x.less(self)
+			if not notGreaterOrEqual(element)
 				return false
 			end
 		end
@@ -82,10 +82,8 @@ class Number
 		if @left.length > 1
 			return false
 		end
-		
-		@left.each do |number|
-			return number.leftNatural?
-		end
+
+		return @left.first.leftNatural?
 	end
 	
 	def rightNatural?
@@ -101,9 +99,7 @@ class Number
 			return false
 		end
 		
-		@right.each do |number|
-			return number.rightNatural?
-		end
+		return @right.first.rightNatural?
 	end
 	
 	def to_s
@@ -112,11 +108,11 @@ class Number
 		end
 		
 		if leftNatural?
-			return (@left.to_s.to_i + 1).to_s
+			return (@left.first.to_s.to_i + 1).to_s
 		end
 		
 		if rightNatural?
-			return (@right.to_s.to_i - 1).to_s
+			return (@right.first.to_s.to_i - 1).to_s
 		end
 		
 		return super.to_s
