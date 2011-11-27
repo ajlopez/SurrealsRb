@@ -10,10 +10,20 @@ class TestNumber < Test::Unit::TestCase
 		assert zero.right.empty?
 	end
 	
+	def test_zero_to_s
+		zero = Surreals::Number.new
+		assert_equal "0", zero.to_s
+	end
+	
 	def test_creates_one
 		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
 		assert one.valid?
 		assert_equal false, one.zero?
+	end
+	
+	def test_one_to_s
+		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
+		assert_equal "1", one.to_s
 	end
 	
 	def test_zero_less_or_equal_than_zero
@@ -38,12 +48,15 @@ class TestNumber < Test::Unit::TestCase
 	def test_zero_equal_zero
 		zero = Surreals::Number.new
 		
-		assert zero.equal(zero)
+		assert zero.lessOrEqual(zero)
+		assert zero.eqv?(zero)
 	end
 	
 	def test_one_equal_one
 		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
-		
-		assert one.equal(one)
+
+		puts "test_one_equal_one"
+		assert one.lessOrEqual(one)
+		assert one.eqv?(one)
 	end
 end
