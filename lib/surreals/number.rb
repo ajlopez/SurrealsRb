@@ -28,6 +28,10 @@ class Number
 		return (@left.empty? and @right.empty?)
 	end
 	
+	def next
+		return Number.new NumberSet.new [self]
+	end
+	
 	def lessOrEqual(x)
 		puts "lessOrEqual #{self} #{x}"
 		result1 = @left.notGreaterOrEqual(x)
