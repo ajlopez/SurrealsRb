@@ -36,6 +36,14 @@ class Number
 		return (lessOrEqual(x) and not x.lessOrEqual(self))
 	end
 	
+	def greater(x)
+		return x.less(self)
+	end
+	
+	def equal(x)
+		return (lessOrEqual(x) and x.lessOrEqual(self))
+	end
+	
 	# self ~>= x
 	def notGreaterOrEqual(x)
 		if x.is_a? Number

@@ -27,9 +27,23 @@ class TestNumber < Test::Unit::TestCase
 		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
 		
 		assert zero.less(one)
+		assert one.greater(zero)
 		assert (not one.less(zero))
+		assert (not zero.greater(one))
 		
 		assert zero.lessOrEqual(one)
-		assert_equal false, one.lessOrEqual(zero)
+		assert (not one.lessOrEqual(zero))
+	end
+	
+	def test_zero_equal_zero
+		zero = Surreals::Number.new
+		
+		assert zero.equal(zero)
+	end
+	
+	def test_one_equal_one
+		one = Surreals::Number.new Surreals::NumberSet.new [ Surreals::Number.new ]
+		
+		assert one.equal(one)
 	end
 end
