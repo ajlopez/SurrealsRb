@@ -32,6 +32,34 @@ class NumberSet < Set
 		return result
 	end
 	
+	def include?(x)
+		self.each do |number|
+			if number.equalSets?(x)
+				return true
+			end
+		end
+		
+		return false
+	end
+	
+	def equal?(x)
+		if not x.is_a? NumberSet
+			return false
+		end
+		
+		if length != x.length
+			return false
+		end
+		
+		self.each do |number|
+			if not x.include?(number)
+				return false
+			end
+		end
+		
+		return true
+	end
+	
 	def lessNumber
 		result = nil
 		

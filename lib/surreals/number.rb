@@ -102,6 +102,14 @@ class Number
 		return @right.first.rightNatural?
 	end
 	
+	def equalSets?(x)
+		return (left.equal?(x.left) and right.equal?(x.right))
+	end
+	
+	def equal?(x)
+		return equalSets?(x)
+	end
+	
 	def to_s
 		if zero?
 			return "0"
@@ -114,8 +122,8 @@ class Number
 		if rightNatural?
 			return (@right.first.to_s.to_i - 1).to_s
 		end
-		
-		return super.to_s
+	
+		return "<" + @left.to_s + ":" + @right.to_s + ">"
 	end
 end
 
